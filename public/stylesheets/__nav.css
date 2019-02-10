@@ -2,7 +2,7 @@ nav {
   background-color: var(--dark-blue-grey);
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
   nav .brand-logo {
     font-size: 2rem;
   }

@@ -1,65 +1,55 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Hero List</title>
-    <!--Import Google Fonts-->
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-
-		<!--Import materialize.css-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+<% include ../templates/header.html %>
+	<% include ../templates/nav.html %>
     <div class="container">
-      <h3>
-        <a class="btn btn-primary" href="/">Back</a>
-      </h3>
+      <a href="/">
+        <i class="material-icons left">chevron_left</i>
+        <span>Back</span>
+      </a>
 
-      <h3><a href="/heroes/create" class="btn">Create Hero</a></h3>
       <h1>Hero List</h1>
-      <% if(heroes.length>0) { %>
-      <table class="highlight responsive-table">
-        <thead>
-          <tr>
-            <th>Hero Name</th>
-            <th>Studio</th>
-            <th>Power</th>
-            <th>Weakness</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-
-          <% for(var i=0; i<heroes.length;i++) { %>
+      <div class="card card-table">
+        <a href="/heroes/create" class="btn right btn-add">Create Hero</a>
+        <% if(heroes.length>0) { %>
+        <table class="highlight">
+          <thead>
             <tr>
-              <td><%= heroes[i].name%></td>
-              <td><%= heroes[i].studio%></td>
-              <td><%= heroes[i].power%></td>
-              <td><%= heroes[i].weakness%></td>
-              <td>               
-                <a href="/heroes/edit/<%= heroes[i]._id%>" class="btn">
-                  <i class="material-icons">create</i>
-                </a>    
-                
-                <form action="/heroes/delete/<%= heroes[i]._id%>" method="post">
-                  <button type="submit" class="btn">
-                    <i class="material-icons">delete</i>
-                  </button>
-                </form>
-                
-              </td>
+              <th>Hero Name</th>
+              <th>Studio</th>
+              <th>Power</th>
+              <th>Weakness</th>
+              <th>Actions</th>
             </tr>
-          <% } %>
-        </tbody>
-      </table>
-      <% } else { %>
-        <div>No heroes found.</div>
-      <% } %>
-    </div>
+          </thead>
+          <tbody>
 
-    <!--JavaScript at end of body for optimized loading-->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  </body>
-</html>
+            <% for(var i=0; i<heroes.length;i++) { %>
+              <tr>
+                <td><%= heroes[i].name%></td>
+                <td><%= heroes[i].studio%></td>
+                <td><%= heroes[i].power%></td>
+                <td><%= heroes[i].weakness%></td>
+                <td class="table-actions">
+                  <a href="/heroes/edit/<%= heroes[i]._id%>"
+                    class="btn btn-actions tooltipped"
+                    data-position="bottom" data-tooltip="Edit">
+                    <i class="material-icons">create</i>
+                  </a>
+
+                  <form action="/heroes/delete/<%= heroes[i]._id%>" method="post">
+                    <button type="submit" class="btn btn-actions tooltipped"
+                    data-position="bottom" data-tooltip="Delete">
+                      <i class="material-icons">delete</i>
+                    </button>
+                  </form>
+
+                </td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+        <% } else { %>
+          <div>No heroes found.</div>
+        <% } %>
+      </div>
+    </div>
+<% include ../templates/footer.html %>

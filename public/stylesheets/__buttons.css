@@ -7,3 +7,23 @@
 .btn:hover {
   background-color: var(--dark-blue-grey);
 }
+
+.btn.btn-actions {
+  margin: 0 5px;
+  padding: 0;
+  background-color: transparent;
+  color: var(--black);
+  box-shadow: none;
+}
+
+.btn.btn-actions:hover {
+  color: var(--blue-grey);
+}
+
+.btn-add {
+  margin-bottom: 20px;
+}
+
+.btn-form {
+  min-width: 120px;
+}

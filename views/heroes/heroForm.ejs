@@ -1,75 +1,68 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Create Employee</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <div class="container">
-      <h3><a href="/heroes"> < Back</a></h3>
-
+<% include ../templates/header.html %>
+	<% include ../templates/nav.html %>
+  <div class="container">
+    <a href="/heroes">
+      <i class="material-icons left">chevron_left</i>
+      <span>Back</span>
+    </a>
       <!-- verifcar se é enviado o id do heroi-->
+    <% if(locals.hero) { %>
+      <h1>Edit Hero</h1>
+    <% } else { %>
+      <h1>Register New Hero</h1>
+    <% } %>
+    <div class="row card">
       <% if(locals.hero) { %>
-        <h1>Edit Hero</h1>
-      <% } else { %>
-        <h1>Register New Hero</h1>
-      <% } %>
+          <form action="/heroes/update/<%= hero._id%>" method="post" class="col s12">
+        <% } else { %>
+          <form action="/heroes/save" method="post" class="col s12">
+        <% } %>
 
-      <% if(locals.hero) { %>
-        <%= hero._id%>
-        <form action="/heroes/update/<%= hero._id%>" method="post">
-      <% } else { %>
-        <form action="/heroes/save" method="post">        
-      <% } %> 
-      
-        <table>
-          <tbody>
-            <tr>
-              <td>Name</td>
+            <div class="input-field col s12">
               <% if(locals.hero) { %>
-                <td><input type="text" name="name" value="<%=locals.hero.name%>"/></td>                
+                <input id="name" name="name" type="text" class="validate" value="<%=locals.hero.name%>">
               <% } else { %>
-                <td><input type="text" name="name" /></td>
-              <% } %> 
+                <input id="name" name="name" type="text" class="validate">
+              <% } %>
+              <label for="name">Name</label>
+            </div>
 
-            </tr>
-            <tr>
-              <td>Studio</td>
-              <td>
-                  <select name="studio">
-                      <% var options = []; %>
-                      <% for(var i = 0; i <= 12; i++) { %>
-                        <option value='<%= i %>'><%= i %></option>
-                      <% } %>
-                    </select>
-              </td>
-            </tr>
-            <tr>
-              <td>Power</td>
+            <div class="input-field col s12">
+              <select name="studio">
+                <% var options = []; %>
+                <% for(var i = 0; i <= 12; i++) { %>
+                  <option value='<%= i %>'><%= i %></option>
+                <% } %>
+              </select>
+              <label>Studio</label>
+            </div>
+
+            <div class="input-field col s12">
               <% if(locals.hero) { %>
-                <td><input type="text" name="power" value="<%=locals.hero.power%>" /></td>
+                <input id="power" name="power" type="text" class="validate" value="<%=locals.hero.power%>">
               <% } else { %>
-                <td><input type="text" name="power" /></td>
-              <% } %> 
-            </tr>
-            <tr>
-              <td>Weakness</td>
+                <input id="power" name="power" type="text" class="validate">
+              <% } %>
+              <label for="power">Power</label>
+            </div>
+
+            <div class="input-field col s12">
               <% if(locals.hero) { %>
-                <td><input type="text" name="weakness" value="<%=hero.weakness%>" /></td>
+                <input id="weakness" name="weakness" type="text" class="validate" value="<%=locals.hero.weakness%>">
               <% } else { %>
-                <td><input type="text" name="weakness" /></td>
-              <% } %> 
-            </tr>
-            <tr>
-                <% if(locals.hero) { %>
-                  <td colspan="2"><input type="submit" value="Update" /></td>                  
-                <% } else { %>
-                  <td colspan="2"><input type="submit" value="Save" /></td>
-                <% } %> 
-            </tr>
-          </tbody>
-        </table>
+                <input id="weakness" name="weakness" type="text" class="validate">
+              <% } %>
+              <label for="weakness">Weakness</label>
+            </div>
+
+            <div class="input-field col s12">
+              <% if(locals.hero) { %>
+                <input type="submit" value="Update" class="btn btn-form right" />
+              <% } else { %>
+                <input type="submit" value="Save" class="btn btn-form right" />
+              <% } %>
+            </div>
       </form>
     </div>
-  </body>
-</html>
+  </div>
+<% include ../templates/footer.html %>
