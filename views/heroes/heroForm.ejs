@@ -9,18 +9,29 @@
       <h3><a href="/heroes"> < Back</a></h3>
 
       <!-- verifcar se é enviado o id do heroi-->
-      <% if(false) { %>
-        <h1>Register New Hero</h1>
-      <% } else { %>
+      <% if(locals.hero) { %>
         <h1>Edit Hero</h1>
+      <% } else { %>
+        <h1>Register New Hero</h1>
       <% } %>
 
-      <form action="/heroes/save" method="post">
+      <% if(locals.hero) { %>
+        <%= hero._id%>
+        <form action="/heroes/update/<%= hero._id%>" method="post">
+      <% } else { %>
+        <form action="/heroes/save" method="post">        
+      <% } %> 
+      
         <table>
           <tbody>
             <tr>
               <td>Name</td>
-              <td><input type="text" name="name" /></td>
+              <% if(locals.hero) { %>
+                <td><input type="text" name="name" value="<%=locals.hero.name%>"/></td>                
+              <% } else { %>
+                <td><input type="text" name="name" /></td>
+              <% } %> 
+
             </tr>
             <tr>
               <td>Studio</td>
@@ -35,14 +46,26 @@
             </tr>
             <tr>
               <td>Power</td>
-              <td><input type="text" name="power" /></td>
+              <% if(locals.hero) { %>
+                <td><input type="text" name="power" value="<%=locals.hero.power%>" /></td>
+              <% } else { %>
+                <td><input type="text" name="power" /></td>
+              <% } %> 
             </tr>
             <tr>
               <td>Weakness</td>
-              <td><input type="text" name="weakness" /></td>
+              <% if(locals.hero) { %>
+                <td><input type="text" name="weakness" value="<%=hero.weakness%>" /></td>
+              <% } else { %>
+                <td><input type="text" name="weakness" /></td>
+              <% } %> 
             </tr>
             <tr>
-              <td colspan="2"><input type="submit" value="Save" /></td>
+                <% if(locals.hero) { %>
+                  <td colspan="2"><input type="submit" value="Update" /></td>                  
+                <% } else { %>
+                  <td colspan="2"><input type="submit" value="Save" /></td>
+                <% } %> 
             </tr>
           </tbody>
         </table>
