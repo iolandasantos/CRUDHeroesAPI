@@ -1,4 +1,7 @@
 @import 'variables.css';
 @import '__nav.css';
+@import '__container.css';
+@import '__footer.css';
 @import '__buttons.css';
 @import '__icon.css';
+@import '__card.css';
