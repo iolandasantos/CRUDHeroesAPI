@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hero List</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container">
+      <h3>
+        <a class="btn btn-primary" href="/">Back</a>
+      </h3>
+      
+      <h3><a href="/heroes/create">Create Hero</a></h3>
+      <h1>Hero List</h1>
+      <% if(heroes.length>0) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Hero Name</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% for(var i=0; i<heroes.length;i++) { %>
+            <tr>
+              <td><a href="/heroes/show/<%= heroes[i]._id%>"><%= heroes[i].name%></a></td>
+              <td><%= heroes[i].position%></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <div>No heroes found.</div>
+      <% } %>
+    </div>
+  </body>
+</html>
