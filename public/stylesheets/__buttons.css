@@ -1,0 +1,9 @@
+.btn,
+.btn:active,
+.btn:visited {
+  background-color: var(--blue-grey);
+}
+
+.btn:hover {
+  background-color: var(--dark-blue-grey);
+}

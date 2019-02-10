@@ -1,4 +1,4 @@
-body {
-  padding: 30px;
-  font: 14px 'Roboto', sans-serif;
-}
+@import 'variables.css';
+@import '__nav.css';
+@import '__buttons.css';
+@import '__icon.css';
