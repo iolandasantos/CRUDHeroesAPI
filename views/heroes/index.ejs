@@ -2,6 +2,13 @@
 <html>
   <head>
     <title>Hero List</title>
+    <!--Import Google Fonts-->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+		<!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
@@ -9,14 +16,15 @@
       <h3>
         <a class="btn btn-primary" href="/">Back</a>
       </h3>
-      
+
       <h3><a href="/heroes/create">Create Hero</a></h3>
       <h1>Hero List</h1>
       <% if(heroes.length>0) { %>
-      <table>
+      <table class="highlight responsive-table">
         <thead>
           <tr>
             <th>Hero Name</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -24,7 +32,10 @@
           <% for(var i=0; i<heroes.length;i++) { %>
             <tr>
               <td><a href="/heroes/show/<%= heroes[i]._id%>"><%= heroes[i].name%></a></td>
-              <td><%= heroes[i].position%></td>
+              <td>
+                <i class="material-icons">create</i>
+                <i class="material-icons">delete</i>
+              </td>
             </tr>
           <% } %>
         </tbody>
@@ -33,5 +44,8 @@
         <div>No heroes found.</div>
       <% } %>
     </div>
+
+    <!--JavaScript at end of body for optimized loading-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>
