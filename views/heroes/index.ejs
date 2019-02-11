@@ -29,7 +29,7 @@
               <td><%= heroes[i].studio%></td>
               <td><%= heroes[i].power%></td>
               <td><%= heroes[i].weakness%></td>
-              <td>
+              <td class="table-actions">
                 <a href="/heroes/edit/<%= heroes[i]._id%>" class="btn btn-actions tooltipped"
                     data-position="bottom" data-tooltip="Edit">
                   <i class="material-icons">create</i>
@@ -37,7 +37,7 @@
 
                 <form action="/heroes/delete/<%= heroes[i]._id%>" method="post">
                   <button type="submit" class="btn btn-actions tooltipped"
-                  data-position="bottom" data-tooltip="Edit">
+                  data-position="bottom" data-tooltip="Delete">
                     <i class="material-icons">delete</i>
                   </button>
                 </form>

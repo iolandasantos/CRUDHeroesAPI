@@ -17,6 +17,7 @@
             <th>Studio Name</th>
             <th>Headquarter</th>
             <th>Website</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -26,7 +27,7 @@
               <td><%= studio[i].name%></td>
               <td><%= studio[i].headquarter%></td>
               <td><a href="<%= studio[i].website%>" target="_blank"><%= studio[i].website%></a></td>
-              <td>
+              <td class="table-actions">
                 <a href="/studios/edit/<%= studio[i]._id%>" class="btn btn-actions tooltipped"
                     data-position="bottom" data-tooltip="Edit">
                   <i class="material-icons">create</i>
@@ -34,7 +35,7 @@
 
                 <form action="/studios/delete/<%= studio[i]._id%>" method="post">
                   <button type="submit" class="btn btn-actions tooltipped"
-                  data-position="bottom" data-tooltip="Edit">
+                  data-position="bottom" data-tooltip="Delete">
                     <i class="material-icons">delete</i>
                   </button>
                 </form>
