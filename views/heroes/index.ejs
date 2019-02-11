@@ -9,7 +9,8 @@
 
       <h1>Hero List</h1>
       <div class="card card-table">
-        <a href="/heroes/create" class="btn right btn-add">Create Hero</a>      <% if(heroes.length>0) { %>
+        <a href="/heroes/create" class="btn right btn-add">Create Hero</a>
+        <% if(heroes.length>0) { %>
       <table class="highlight">
         <thead>
           <tr>
@@ -35,7 +36,7 @@
                 </a>
 
                 <form action="/heroes/delete/<%= heroes[i]._id%>" method="post">
-                  <button type="submit" class="btn" class="btn btn-actions tooltipped"
+                  <button type="submit" class="btn btn-actions tooltipped"
                   data-position="bottom" data-tooltip="Edit">
                     <i class="material-icons">delete</i>
                   </button>

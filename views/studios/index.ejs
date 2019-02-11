@@ -1,15 +1,16 @@
 <% include ../templates/header.html %>
   <% include ../templates/nav.html %>
-  
+
 <div class="container">
       <a href="/">
         <i class="material-icons left">chevron_left</i>
         <span>Back</span>
       </a>
-      
+
       <h1>Studio List</h1>
       <div class="card card-table">
-        <a href="/studios/create" class="btn right btn-add">Create Studio</a>      <% if(studio.length>0) { %>
+        <a href="/studios/create" class="btn right btn-add">Create Studio</a>
+        <% if(studio.length>0) { %>
       <table class="highlight">
         <thead>
           <tr>
@@ -25,19 +26,19 @@
               <td><%= studio[i].name%></td>
               <td><%= studio[i].headquarter%></td>
               <td><a href="<%= studio[i].website%>" target="_blank"><%= studio[i].website%></a></td>
-              <td>               
+              <td>
                 <a href="/studios/edit/<%= studio[i]._id%>" class="btn btn-actions tooltipped"
                     data-position="bottom" data-tooltip="Edit">
                   <i class="material-icons">create</i>
-                </a>    
-                
+                </a>
+
                 <form action="/studios/delete/<%= studio[i]._id%>" method="post">
-                  <button type="submit" class="btn" class="btn btn-actions tooltipped"
+                  <button type="submit" class="btn btn-actions tooltipped"
                   data-position="bottom" data-tooltip="Edit">
                     <i class="material-icons">delete</i>
                   </button>
                 </form>
-                
+
               </td>
             </tr>
           <% } %>
