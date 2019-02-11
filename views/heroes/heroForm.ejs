@@ -11,6 +11,23 @@
     <% } else { %>
       <h1>Register New Hero</h1>
     <% } %>
+
+    <% if(locals.validacao) { %>
+    <% if (locals.validacao.length) { %>
+				<div class="alert alert-danger">
+					<strong>Attention!!!</strong>
+					<ul>
+						<% for(var i = 0; i < locals.validacao.length; i++) { %>
+							<li>
+								<%=locals.validacao[i].msg%>
+							</li>
+						<% } %>
+					</ul>
+				</div>
+      <% } %>
+      <% } %>
+
+
     <div class="row card">
       <% if(locals.hero) { %>
           <form action="/heroes/update/<%= hero._id%>" method="post" class="col s12">

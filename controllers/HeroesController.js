@@ -36,6 +36,22 @@ heroController.create = function(req, res) {
 
 
 heroController.save = function(req, res) {
+
+  var dadosForm = req.body;
+  console.log('req.body:', req.body)
+  req.assert('name',    `The field 'Name' is required`).notEmpty();
+  //req.assert('studio', 'Usuário não pode ser vazio').notEmpty();
+  req.assert('power',   `The field 'Power' is required`).notEmpty();
+  req.assert('weakness', `The field 'Weakness' is required`).notEmpty();
+
+  var erros = req.validationErrors();
+
+  if(erros){
+      res.render('../views/heroes/heroForm', {validacao: erros, hero: dadosForm});
+      return;
+  }
+
+
   var hero = new Hero(req.body);
 
   hero.save(function(err) {
@@ -63,7 +79,21 @@ heroController.edit = function(req, res) {
 
 
 heroController.update = function(req, res) {
-  console.log('update: ', req.body);
+  
+  var dadosForm = req.body;
+
+  req.assert('name',    `The field 'Name' is required`).notEmpty();
+  //req.assert('studio', 'Usuário não pode ser vazio').notEmpty();
+  req.assert('power',   `The field 'Power' is required`).notEmpty();
+  req.assert('weakness', `The field 'Weakness' is required`).notEmpty();
+
+  var erros = req.validationErrors();
+
+  if(erros){
+      res.render('../views/heroes/heroForm', {validacao: erros, hero: dadosForm});
+      return;
+  }
+  
   Hero.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, studio: req.body.studio, power: req.body.power, weakness: req.body.weakness }}, { new: true }, function (err, hero) {
     if (err) {
       console.log(err);
