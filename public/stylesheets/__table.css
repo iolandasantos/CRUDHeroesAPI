@@ -1,0 +1,5 @@
+.table-actions {
+    display: flex;
+    display: -ms-flex;
+    flex-direction: row;
+  }

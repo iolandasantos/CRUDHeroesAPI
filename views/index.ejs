@@ -1,46 +1,42 @@
-<!DOCTYPE HTML>
-<html lang="pt-br">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<% include ./templates/header.html %>
+	<% include ./templates/nav.html %>
+	<div class="container row">
+		<div class="col s12 m6">
+			<div class="card large hoverable">
+				<div class="card-image">
+					<i class="material-icons icon-project">movie</i>
+					<span class="card-title">Studios</span>
+				</div>
+				<div class="card-content">
+					<h4 class="card-quote">"DC? Marvel? Vertigo? Wich one is the best?"</h4>
+					<p>Manage and create Studios by accessing the Studios page.</p>
+				</div>
+				<div class="card-action center">
+					<a href="/studios" class="btn waves-effect waves-light">
+						<i class="material-icons right">arrow_forward</i>
+						<span>Studio page</span>
+					</a>
+				</div>
+			</div>
+		</div>
 
-		<title>C.R.U.D Heroes</title>
-
-		<!-- JQuery -->
-		<!-- <script src="js/jquery-2.2.1.js"></script> -->
-
-		<!--Import Google Fonts-->
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-
-		<!--Import materialize.css-->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-		<!-- incluindo css -->
-		<link rel='stylesheet' href='/stylesheets/style.css' />
-
-	</head>
-
-	<body class="body-index">
-
-
-		<nav class="navbar navbar-default navbar-static-top">
-			<h1>C.R.U.D Heroes</h1>
-		</nav>
-    <div class="container ">
-      <div class="row col-md-6">
-        <h2 class="col-md-6">Heroes</h2>
-				<a href="/heroes/" class="btn btn-primary col-md-6">Heroes</a>
-
-
-      </div>
-      <div class="row col-md-6">
-        <h2 class="col-md-6">Studios</h2>
-        <a href="" class="btn btn-primary col-md-6">Studios</a>
-      </div>
-    </div>
-
-		<!--JavaScript at end of body for optimized loading-->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	</body>
-</html>
+		<div class="col s12 m6">
+			<div class="card large hoverable">
+				<div class="card-image">
+					<i class="material-icons icon-project">face</i>
+					<span class="card-title">Heroes</span>
+				</div>
+				<div class="card-content">
+					<h4 class="card-quote">"With great power, comes great responsibility."</h4>
+					<p>Manage and create Heroes by accessing the Heroes page.</p>
+				</div>
+				<div class="card-action center">
+					<a href="/heroes" class="btn waves-effect waves-light">
+						<i class="material-icons right">arrow_forward</i>
+						<span>Heroes page</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<% include ./templates/footer.html %>

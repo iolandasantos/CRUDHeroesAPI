@@ -7,34 +7,31 @@
         <span>Back</span>
       </a>
       
-      <h1>Hero List</h1>
+      <h1>Studio List</h1>
       <div class="card card-table">
-        <a href="/heroes/create" class="btn right btn-add">Create Hero</a>      <% if(heroes.length>0) { %>
+        <a href="/studios/create" class="btn right btn-add">Create Studio</a>      <% if(studio.length>0) { %>
       <table class="highlight">
         <thead>
           <tr>
-            <th>Hero Name</th>
-            <th>Studio</th>
-            <th>Power</th>
-            <th>Weakness</th>
-            <th>Actions</th>
+            <th>Studio Name</th>
+            <th>Headquarter</th>
+            <th>Website</th>
           </tr>
         </thead>
         <tbody>
 
-          <% for(var i=0; i<heroes.length;i++) { %>
+          <% for(var i=0; i<studio.length;i++) { %>
             <tr>
-              <td><%= heroes[i].name%></td>
-              <td><%= heroes[i].studio%></td>
-              <td><%= heroes[i].power%></td>
-              <td><%= heroes[i].weakness%></td>
+              <td><%= studio[i].name%></td>
+              <td><%= studio[i].headquarter%></td>
+              <td><a href="<%= studio[i].website%>" target="_blank"><%= studio[i].website%></a></td>
               <td>               
-                <a href="/heroes/edit/<%= heroes[i]._id%>" class="btn btn-actions tooltipped"
+                <a href="/studios/edit/<%= studio[i]._id%>" class="btn btn-actions tooltipped"
                     data-position="bottom" data-tooltip="Edit">
                   <i class="material-icons">create</i>
                 </a>    
                 
-                <form action="/heroes/delete/<%= heroes[i]._id%>" method="post">
+                <form action="/studios/delete/<%= studio[i]._id%>" method="post">
                   <button type="submit" class="btn" class="btn btn-actions tooltipped"
                   data-position="bottom" data-tooltip="Edit">
                     <i class="material-icons">delete</i>
@@ -47,7 +44,7 @@
         </tbody>
       </table>
       <% } else { %>
-        <div>No heroes found.</div>
+        <div>No studios found.</div>
       <% } %>
     </div>
   </div>
