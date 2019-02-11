@@ -1,9 +1,9 @@
 nav {
-    background-color: var(--dark-blue-grey);
+  background-color: var(--dark-blue-grey);
+}
+
+@media screen and (max-width: 768px) {
+  nav .brand-logo {
+    font-size: 2rem;
   }
-  
-  @media screen and (max-width: 768px) {
-    nav .brand-logo {
-      font-size: 2rem;
-    }
-  }
+}

@@ -3,8 +3,8 @@ var mongoose = require('mongoose');
 var StudioSchema = new mongoose.Schema({
   name: String,
   studio: Number,
-  power: String,
-  weakness: String,
+  website: String,
+  headquarter: String,
   updated_at: { type: Date, default: Date.now },
 });
 
