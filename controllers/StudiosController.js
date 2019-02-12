@@ -63,7 +63,7 @@ studioController.edit = function(req, res) {
 
 studioController.update = function(req, res) {
   console.log('update: ', req.body);
-  Studio.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, studio: req.body.studio, power: req.body.power, weakness: req.body.weakness }}, { new: true }, function (err, hero) {
+  Studio.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, headquarter: req.body.headquarter, website: req.body.website }}, { new: true }, function (err, hero) {
     if (err) {
       console.log(err);
     }

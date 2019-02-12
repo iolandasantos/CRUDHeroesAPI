@@ -17,7 +17,6 @@ mongoose.connect('mongodb://localhost/CrudHeroes', { useNewUrlParser: true })
   .catch((err) => console.error(err));
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -34,7 +33,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressValidator());
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/heroes', heroesRouter);
 app.use('/studios', studiosRouter);
 

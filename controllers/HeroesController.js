@@ -1,8 +1,7 @@
 var mongoose = require("mongoose");
 
-//var Hero = mongoose.model('../models/hero.js');
 var Hero = require('../models/Hero');
-
+var Studio = require('../models/studio');
 
 var heroController = {};
 
@@ -31,7 +30,15 @@ heroController.show = function(req, res) {
 
 heroController.create = function(req, res) {
   const hero = false;
-  res.render("../views/heroes/heroForm", {hero: hero});
+  Studio.find({}).exec(function (err, studios) {
+    if (err) {
+      console.log("Error:", err);
+    }
+    else {
+      console.log(studios);
+      res.render("../views/heroes/heroForm", {hero: hero, studios: studios});
+    }
+  });
 };
 
 
@@ -72,7 +79,15 @@ heroController.edit = function(req, res) {
       console.log("Error:", err);
     }
     else {
-      res.render("../views/heroes/heroForm", {hero: hero});
+      Studio.find({}).exec(function (err, studios) {
+        if (err) {
+          console.log("Error:", err);
+        }
+        else {
+          console.log(studios);
+          res.render("../views/heroes/heroForm", {hero: hero, studios: studios});
+        }
+      });
     }
   });
 };

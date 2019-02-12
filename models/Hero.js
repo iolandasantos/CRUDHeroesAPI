@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var HeroSchema = new mongoose.Schema({
   name: String,
-  studio: Number,
+  studio: String,
   power: String,
   weakness: String,
   updated_at: { type: Date, default: Date.now },

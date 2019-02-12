@@ -47,9 +47,16 @@
 
             <div class="input-field col s12">
               <select name="studio">
-                <% var options = []; %>
-                <% for(var i = 0; i <= 12; i++) { %>
-                  <option value='<%= i %>'><%= i %></option>
+                  <% if(!locals.hero) { %>
+                    <option value="" selected>Select</option>
+                  <% } %>
+
+                <% for(var i = 0; i < locals.studios.length; i++) { %>
+                  <% if(locals.studios[i]._id == locals.hero.studio ) { %>
+                    <option value='<%= locals.studios[i]._id %>' selected><%= locals.studios[i].name %></option>
+                  <% } else { %>
+                    <option value='<%= locals.studios[i]._id %>'><%= locals.studios[i].name %></option>
+                  <% } %>
                 <% } %>
               </select>
               <label>Studio*</label>
