@@ -26,11 +26,12 @@ heroController.show = function(req, res) {
       res.render("../views/heroes/show", {hero: hero});
     }
   });
-};
+};;
 
 
 heroController.create = function(req, res) {
-  res.render("../views/heroes/heroForm");
+  const hero = false;
+  res.render("../views/heroes/heroForm", {hero: hero});
 };
 
 
@@ -43,7 +44,6 @@ heroController.save = function(req, res) {
       res.render("../views/heroes/create");
     } else {
       console.log("Successfully created an hero.");
-      //res.redirect("/heroes/show/"+hero._id);
       res.redirect("/heroes");
     }
   });
@@ -63,12 +63,13 @@ heroController.edit = function(req, res) {
 
 
 heroController.update = function(req, res) {
-  Hero.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, address: req.body.address, position: req.body.position, salary: req.body.salary }}, { new: true }, function (err, hero) {
+  console.log('update: ', req.body);
+  Hero.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, studio: req.body.studio, power: req.body.power, weakness: req.body.weakness }}, { new: true }, function (err, hero) {
     if (err) {
       console.log(err);
-      res.render("../views/heroes/edit", {hero: req.body});
+      //res.render("../views/heroes/edit", {hero: req.body});
     }
-    res.redirect("/heroes/show/"+hero._id);
+    res.redirect("/heroes");
   });
 };
 
