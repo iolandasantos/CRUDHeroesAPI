@@ -37,11 +37,12 @@
 
             <div class="input-field col s12">
               <% if(locals.hero) { %>
-                <input id="name" name="name" type="text" class="validate" value="<%=locals.hero.name%>">
+                <input id="name" name="name" type="text" class="validate" value="<%=locals.hero.name%>"
+                  maxlength="50" minlength="3">
               <% } else { %>
-                <input id="name" name="name" type="text" class="validate">
+                <input id="name" name="name" type="text" class="validate" maxlength="50" minlength="3">
               <% } %>
-              <label for="name">Name</label>
+              <label for="name">Name*</label>
             </div>
 
             <div class="input-field col s12">
@@ -51,25 +52,27 @@
                   <option value='<%= i %>'><%= i %></option>
                 <% } %>
               </select>
-              <label>Studio</label>
+              <label>Studio*</label>
             </div>
 
             <div class="input-field col s12">
               <% if(locals.hero) { %>
-                <input id="power" name="power" type="text" class="validate" value="<%=locals.hero.power%>">
+                <input id="power" name="power" type="text" class="validate" value="<%=locals.hero.power%>"
+                  maxlength="50" minlength="3">
               <% } else { %>
-                <input id="power" name="power" type="text" class="validate">
+                <input id="power" name="power" type="text" class="validate" maxlength="50" minlength="3">
               <% } %>
-              <label for="power">Power</label>
+              <label for="power">Power*</label>
             </div>
 
             <div class="input-field col s12">
               <% if(locals.hero) { %>
-                <input id="weakness" name="weakness" type="text" class="validate" value="<%=locals.hero.weakness%>">
+                <input id="weakness" name="weakness" type="text" class="validate" value="<%=locals.hero.weakness%>"
+                  maxlength="50" minlength="3">
               <% } else { %>
-                <input id="weakness" name="weakness" type="text" class="validate">
+                <input id="weakness" name="weakness" type="text" class="validate" maxlength="50" minlength="3">
               <% } %>
-              <label for="weakness">Weakness</label>
+              <label for="weakness">Weakness*</label>
             </div>
 
             <div class="input-field col s12">

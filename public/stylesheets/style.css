@@ -7,6 +7,7 @@
 @import '__card.css';
 @import '__table.css';
 @import '__inputs.css';
+@import '__alert.css';
 
 body {
   color: var(--black);
