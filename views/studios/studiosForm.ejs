@@ -9,7 +9,7 @@
     <% if(locals.studio) { %>
       <h1>Edit Studio</h1>
     <% } else { %>
-      <h1>Register New Studio</h1>  
+      <h1>Register New Studio</h1>
     <% } %>
     <div class="row card">
       <% if(locals.studio) { %>
@@ -20,27 +20,32 @@
 
             <div class="input-field col s12">
               <% if(locals.studio) { %>
-                <input id="name" name="name" type="text" class="validate" value="<%=locals.studio.name%>">
+                <input id="name" name="name" type="text" class="validate" value="<%=locals.studio.name%>"
+                  maxlength="50" minlength="3">
               <% } else { %>
-                <input id="name" name="name" type="text" class="validate">
+                <input id="name" name="name" type="text" class="validate" maxlength="50" minlength="3">
               <% } %>
               <label for="name">Name</label>
             </div>
 
             <div class="input-field col s12">
               <% if(locals.studio) { %>
-                <input id="headquarter" name="headquarter" type="text" class="validate" value="<%=locals.studio.headquarter%>">
+                <input id="headquarter" name="headquarter" type="text" class="validate"
+                  value="<%=locals.studio.headquarter%>" maxlength="50" minlength="3">
               <% } else { %>
-                <input id="headquarter" name="headquarter" type="text" class="validate">
+                <input id="headquarter" name="headquarter" type="text" class="validate"
+                  maxlength="50" minlength="3">
               <% } %>
               <label for="headquarter">Headquarter</label>
             </div>
 
             <div class="input-field col s12">
               <% if(locals.studio) { %>
-                <input id="website" name="website" type="text" class="validate" value="<%=locals.studio.website%>">
+                <input id="website" name="website" type="text" class="validate"
+                  value="<%=locals.studio.website%>" maxlength="50" minlength="3">
               <% } else { %>
-                <input id="website" name="website" type="text" class="validate">
+                <input id="website" name="website" type="text" class="validate"
+                  maxlength="50" minlength="3">
               <% } %>
               <label for="website">Website</label>
             </div>
