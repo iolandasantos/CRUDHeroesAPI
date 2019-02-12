@@ -79,7 +79,7 @@ heroController.edit = function(req, res) {
 
 
 heroController.update = function(req, res) {
-  
+
   var dadosForm = req.body;
 
   req.assert('name',    `The field 'Name' is required`).notEmpty();
@@ -93,7 +93,7 @@ heroController.update = function(req, res) {
       res.render('../views/heroes/heroForm', {validacao: erros, hero: dadosForm});
       return;
   }
-  
+
   Hero.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, studio: req.body.studio, power: req.body.power, weakness: req.body.weakness }}, { new: true }, function (err, hero) {
     if (err) {
       console.log(err);

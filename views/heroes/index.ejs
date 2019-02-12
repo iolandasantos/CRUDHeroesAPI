@@ -1,6 +1,7 @@
 <% include ../templates/header.html %>
-	<% include ../templates/nav.html %>
-    <div class="container">
+  <% include ../templates/nav.html %>
+
+<div class="container">
       <a href="/">
         <i class="material-icons left">chevron_left</i>
         <span>Back</span>
@@ -10,46 +11,45 @@
       <div class="card card-table">
         <a href="/heroes/create" class="btn right btn-add">Create Hero</a>
         <% if(heroes.length>0) { %>
-        <table class="highlight">
-          <thead>
+      <table class="highlight">
+        <thead>
+          <tr>
+            <th>Hero Name</th>
+            <th>Studio</th>
+            <th>Power</th>
+            <th>Weakness</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% for(var i=0; i<heroes.length;i++) { %>
             <tr>
-              <th>Hero Name</th>
-              <th>Studio</th>
-              <th>Power</th>
-              <th>Weakness</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-
-            <% for(var i=0; i<heroes.length;i++) { %>
-              <tr>
-                <td><%= heroes[i].name%></td>
-                <td><%= heroes[i].studio%></td>
-                <td><%= heroes[i].power%></td>
-                <td><%= heroes[i].weakness%></td>
-                <td class="table-actions">
-                  <a href="/heroes/edit/<%= heroes[i]._id%>"
-                    class="btn btn-actions tooltipped"
+              <td><%= heroes[i].name%></td>
+              <td><%= heroes[i].studio%></td>
+              <td><%= heroes[i].power%></td>
+              <td><%= heroes[i].weakness%></td>
+              <td class="table-actions">
+                <a href="/heroes/edit/<%= heroes[i]._id%>" class="btn btn-actions tooltipped"
                     data-position="bottom" data-tooltip="Edit">
-                    <i class="material-icons">create</i>
-                  </a>
+                  <i class="material-icons">create</i>
+                </a>
 
-                  <form action="/heroes/delete/<%= heroes[i]._id%>" method="post">
-                    <button type="submit" class="btn btn-actions tooltipped"
-                    data-position="bottom" data-tooltip="Delete">
-                      <i class="material-icons">delete</i>
-                    </button>
-                  </form>
+                <form action="/heroes/delete/<%= heroes[i]._id%>" method="post">
+                  <button type="submit" class="btn btn-actions tooltipped"
+                  data-position="bottom" data-tooltip="Delete">
+                    <i class="material-icons">delete</i>
+                  </button>
+                </form>
 
-                </td>
-              </tr>
-            <% } %>
-          </tbody>
-        </table>
-        <% } else { %>
-          <div>No heroes found.</div>
-        <% } %>
-      </div>
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <div>No heroes found.</div>
+      <% } %>
     </div>
-<% include ../templates/footer.html %>
+  </div>
+  <% include ../templates/footer.html %>

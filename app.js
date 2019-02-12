@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var expressValidator = require('express-validator');
 
 var heroesRouter = require('./routes/heroes');
+var studiosRouter = require('./routes/studios');
 
 
 mongoose.Promise = global.Promise;
@@ -35,6 +36,7 @@ app.use(expressValidator());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/heroes', heroesRouter);
+app.use('/studios', studiosRouter);
 
 
 // catch 404 and forward to error handler
