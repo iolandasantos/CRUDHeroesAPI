@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var expressValidator = require('express-validator');
+
 var heroesRouter = require('./routes/heroes');
 var studiosRouter = require('./routes/studios');
 
@@ -15,7 +17,6 @@ mongoose.connect('mongodb://localhost/CrudHeroes', { useNewUrlParser: true })
   .catch((err) => console.error(err));
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -28,9 +29,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+/* configurar o middleware express-validator */
+app.use(expressValidator());
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/heroes', heroesRouter);
 app.use('/studios', studiosRouter);
 

@@ -7,3 +7,7 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
 input[type=text]:not(.browser-default):focus:not([readonly])+label {
   color: var(--blue-grey);
 }
+
+.select-wrapper input.select-dropdown:focus {
+  border-bottom: 1px solid var(--blue-grey);
+}
