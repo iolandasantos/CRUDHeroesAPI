@@ -7,8 +7,6 @@ var hero = require("../controllers/HeroesController.js");
 router.get('/', hero.list);
 //router.get('/heroes', hero.list);
 
-// Get single hero by id
-router.get('/show/:id', hero.show);
 
 // Create hero
 router.get('/create', hero.create);

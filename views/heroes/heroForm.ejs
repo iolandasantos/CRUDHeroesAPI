@@ -6,10 +6,10 @@
       <span>Back</span>
     </a>
       <!-- verifcar se é enviado o id do heroi-->
-    <% if(locals.hero) { %>
-      <h1>Edit Hero</h1>
-    <% } else { %>
+    <% if(!locals.hero || locals.hero._id != '') { %>
       <h1>Register New Hero</h1>
+    <% } else { %>
+      <h1>Edit Hero</h1>
     <% } %>
 
     <% if(locals.validacao) { %>
@@ -30,13 +30,15 @@
 
     <div class="row card">
       <% if(locals.hero) { %>
-          <form action="/heroes/update/<%= hero._id%>" method="post" class="col s12">
+          <form action="/heroes/update/<%= locals.hero._id%>" method="post" class="col s12">
         <% } else { %>
           <form action="/heroes/save" method="post" class="col s12">
         <% } %>
+        
 
             <div class="input-field col s12">
               <% if(locals.hero) { %>
+                <input id="_id" name="_id" type="text" value="<%=locals.hero._id%>" hidden>
                 <input id="name" name="name" type="text" class="validate" value="<%=locals.hero.name%>"
                   maxlength="50" minlength="3">
               <% } else { %>
@@ -46,9 +48,9 @@
             </div>
 
             <div class="input-field col s12">
-              <select name="studio">
-                  <% if(!locals.hero) { %>
-                    <option value="" selected>Select</option>
+              <select id="studio" name="studio">
+                  <% if(!locals.hero || locals.hero._id != '' ) { %>
+                    <option value='' disabled selected>Select</option>
                   <% } %>
 
                 <% for(var i = 0; i < locals.studios.length; i++) { %>
