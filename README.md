@@ -6,13 +6,13 @@ This project provides a good sample of how-to-do a CRUD in Node.js using MongoDB
 
 ## Table of Contents
 
--   [Installation](https://github.com/fabriciohsilva/CRUDHeroes#features)
+-   [Installation](https://github.com/fabriciohsilva/CRUDHeroes#installation)
 	- [Setup]()
 	- [Browser Compatibility](https://github.com/fabriciohsilva/CRUDHeroes#browser_compatibility)
 -   [How it works](https://github.com/fabriciohsilva/CRUDHeroes#features)
 -   [Credits]()
 	- [Top Contributors]()
-	- [License]()
+	- [License](https://github.com/fabriciohsilva/CRUDHeroes#license)
 
 
 ## Installation
