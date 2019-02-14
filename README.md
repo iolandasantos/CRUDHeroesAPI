@@ -111,6 +111,7 @@ To remove an Hero click on "trash can" icon.
 - ESLint 
 - Prettier
 - Mongoose
+- Express Validator
 
 
 ### Top Contributors
