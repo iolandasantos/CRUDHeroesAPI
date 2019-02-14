@@ -7,6 +7,17 @@
         <span>Back</span>
       </a>
 
+      <% if(locals.validacao) { %>
+            <div class="alert alert-danger">
+              <strong>Attention!!!</strong>
+              <ul>               
+                  <li>
+                    <%=locals.validacao%>
+                  </li>
+              </ul>
+            </div>
+        <% } %>
+
       <h1>Studio List</h1>
       <div class="card card-table">
         <a href="/studios/create" class="btn right btn-add">Create Studio</a>

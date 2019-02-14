@@ -30,11 +30,26 @@ studioController.show = function(req, res) {
 
 studioController.create = function(req, res) {
   const studio = false;
-  res.render("../views/studios/studiosForm", {studio: studio});
+  res.render("../views/studios/studiosForm", {studio: studio, id: false});
 };
 
 
 studioController.save = function(req, res) {
+
+  var dadosForm = req.body;
+  console.log('dadosForm:', dadosForm)
+
+  req.assert('name',        `The field 'Name' is required`).notEmpty();
+  req.assert('headquarter', `The field 'Headquarter' is required`).notEmpty();
+  req.assert('website',     `The field 'Website' is required`).notEmpty();
+
+  var erros = req.validationErrors();
+
+  if(erros){
+    res.render('../views/studios/studiosForm', {validacao: erros, studio: dadosForm, id: false});
+    return;
+  }
+
   var studio = new Studio(req.body);
 
   studio.save(function(err) {
@@ -55,14 +70,28 @@ studioController.edit = function(req, res) {
       console.log("Error:", err);
     }
     else {
-      res.render("../views/studios/studiosForm", {studio: studio});
+      console.log('studio: ', studio);
+      res.render("../views/studios/studiosForm", {studio: studio, id: req.params.id});
     }
   });
 };
 
 
 studioController.update = function(req, res) {
-  console.log('update: ', req.body);
+
+  var dadosForm = req.body;
+
+  req.assert('name',        `The field 'Name' is required`).notEmpty();
+  req.assert('headquarter', `The field 'Headquarter' is required`).notEmpty();
+  req.assert('website',     `The field 'Website' is required`).notEmpty();
+
+  var erros = req.validationErrors();
+
+  if(erros){
+    res.render('../views/studios/studiosForm', {validacao: erros, studio: dadosForm, id: req.params.id});
+    return;
+  }
+
   Studio.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, headquarter: req.body.headquarter, website: req.body.website }}, { new: true }, function (err, hero) {
     if (err) {
       console.log(err);
