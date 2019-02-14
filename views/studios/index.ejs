@@ -1,0 +1,64 @@
+<% include ../templates/header.html %>
+  <% include ../templates/nav.html %>
+
+<div class="container">
+      <a href="/">
+        <i class="material-icons left">chevron_left</i>
+        <span>Back</span>
+      </a>
+
+      <% if(locals.validacao) { %>
+            <div class="alert alert-danger">
+              <strong>Attention!!!</strong>
+              <ul>               
+                  <li>
+                    <%=locals.validacao%>
+                  </li>
+              </ul>
+            </div>
+        <% } %>
+
+      <h1>Studio List</h1>
+      <div class="card card-table">
+        <a href="/studios/create" class="btn right btn-add">Create Studio</a>
+        <% if(studio.length>0) { %>
+      <table class="highlight">
+        <thead>
+          <tr>
+            <th>Studio Name</th>
+            <th>Headquarter</th>
+            <th>Website</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% for(var i=0; i<studio.length;i++) { %>
+            <tr>
+              <td><%= studio[i].name%></td>
+              <td><%= studio[i].headquarter%></td>
+              <td><a href="<%= studio[i].website%>" target="_blank"><%= studio[i].website%></a></td>
+              <td class="table-actions">
+                <a href="/studios/edit/<%= studio[i]._id%>" class="btn btn-actions tooltipped"
+                    data-position="bottom" data-tooltip="Edit">
+                  <i class="material-icons">create</i>
+                </a>
+
+                <form action="/studios/delete/<%= studio[i]._id%>" method="post">
+                  <button type="submit" class="btn btn-actions tooltipped"
+                  data-position="bottom" data-tooltip="Delete">
+                    <i class="material-icons">delete</i>
+                  </button>
+                </form>
+
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <div>No studios found.</div>
+      <% } %>
+    </div>
+  </div>
+  <% include ../templates/footer.html %>

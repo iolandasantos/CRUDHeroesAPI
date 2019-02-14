@@ -1,0 +1,80 @@
+<% include ../templates/header.html %>
+	<% include ../templates/nav.html %>
+  <div class="container">
+    <a href="/studios">
+      <i class="material-icons left">chevron_left</i>
+      <span>Back</span>
+    </a>
+      <!-- verifcar se é enviado o id do studio-->
+    <% if(!locals.studio || !locals.id) { %>
+      <h1>Register New Studio</h1>
+    <% } else { %>
+      <h1>Edit Studio</h1>
+    <% } %>
+
+    <% if(locals.validacao) { %>
+      <% if (locals.validacao.length) { %>
+        <div class="alert alert-danger">
+          <strong>Attention!!!</strong>
+          <ul>
+            <% for(var i = 0; i < locals.validacao.length; i++) { %>
+              <li>
+                <%=locals.validacao[i].msg%>
+              </li>
+            <% } %>
+          </ul>
+        </div>
+      <% } %>
+    <% } %>
+
+    <div class="row card">
+      <% if(!locals.studio || !locals.id) { %>
+        <form action="/studios/save" method="post" class="col s12">
+          <div class="input-field col s12">
+            <input id="name" name="name" type="text" class="validate" maxlength="50" minlength="3">
+            <label for="name">Name*</label>
+          </div>
+
+          <div class="input-field col s12">
+            <input id="headquarter" name="headquarter" type="text" class="validate"
+              maxlength="50" minlength="3">
+            <label for="headquarter">Headquarter*</label>
+          </div>
+
+          <div class="input-field col s12">
+            <input id="website" name="website" type="text" class="validate"
+              maxlength="50" minlength="3">
+            <label for="website">Website*</label>
+          </div>
+
+          <div class="input-field col s12">
+            <input type="submit" value="Save" class="btn btn-form right" />
+          </div>
+      <% } else { %>
+        <form action="/studios/update/<%= locals.id%>" method="post" class="col s12">
+          <div class="input-field col s12">
+            <input id="name" name="name" type="text" class="validate" value="<%=locals.studio.name%>"
+              maxlength="50" minlength="3">
+            <label for="name">Name*</label>
+          </div>
+
+          <div class="input-field col s12">
+            <input id="headquarter" name="headquarter" type="text" class="validate"
+              value="<%=locals.studio.headquarter%>" maxlength="50" minlength="3">
+            <label for="headquarter">Headquarter*</label>
+          </div>
+
+          <div class="input-field col s12">
+            <input id="website" name="website" type="text" class="validate"
+              value="<%=locals.studio.website%>" maxlength="50" minlength="3">
+            <label for="website">Website*</label>
+          </div>
+
+          <div class="input-field col s12">
+            <input type="submit" value="Update" class="btn btn-form right" />
+          </div>
+      <% } %>
+        </form>
+    </div>
+  </div>
+<% include ../templates/footer.html %>

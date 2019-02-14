@@ -1,0 +1,22 @@
+@import 'variables.css';
+@import '__nav.css';
+@import '__container.css';
+@import '__footer.css';
+@import '__buttons.css';
+@import '__icon.css';
+@import '__card.css';
+@import '__table.css';
+@import '__inputs.css';
+@import '__alert.css';
+
+body {
+  color: var(--black);
+  position: relative;
+  padding-bottom: 6rem;
+  min-height: 100%;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 2.5rem;
+}

@@ -1,0 +1,13 @@
+input[type=text]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid var(--blue-grey);
+  -webkit-box-shadow: 0 1px 0 0 var(--blue-grey);
+  box-shadow: 0 1px 0 0 var(--blue-grey);
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly])+label {
+  color: var(--blue-grey);
+}
+
+.select-wrapper input.select-dropdown:focus {
+  border-bottom: 1px solid var(--blue-grey);
+}
