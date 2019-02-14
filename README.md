@@ -124,4 +124,3 @@ To remove an Hero click on "trash can" icon.
 ### License
 
 CRUDHeroes is released under the  [MIT License](https://github.com/fabriciohsilva/CRUDHeroes/blob/master/LICENSE.md).
-
