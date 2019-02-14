@@ -13,25 +13,25 @@ heroController.list = function(req, res) {
     else {
       console.log('heroes:', heroes.length);
 
-      studioList()
+      getStudioList()
         .then((studios) => {
           heroes.forEach((hero) => {
             let tempstudio = studios.find((studio) => {
               if (studio._id == hero.studio)
               return studio;
             });
-            hero.studio = tempstudio.name;       
+            hero.studio = tempstudio.name;
           });
-          
+
           if(heroes.length === 0){
             res.render("../views/heroes/index", {heroes: heroes});
             return;
           }
 
-          res.render("../views/heroes/index", {heroes: heroes});     
+          res.render("../views/heroes/index", {heroes: heroes});
          })
-        .catch((err) => { 
-          
+        .catch((err) => {
+
 
 
           res.render("../views/studios/index", {validacao: 'You must register at least one studio first', studio: []});
@@ -43,7 +43,7 @@ heroController.list = function(req, res) {
 
 heroController.create = function(req, res) {
 
-  studioList()
+  getStudioList()
     .then((studios) => {
       res.render("../views/heroes/heroForm", {hero: false, studios: studios, id: false});
     })
@@ -63,9 +63,9 @@ heroController.save = function(req, res) {
   req.assert('weakness', `The field 'Weakness' is required`).notEmpty();
 
   var erros = req.validationErrors();
-  
+
   if(erros){
-    studioList()
+    getStudioList()
     .then((studios) => {
       res.render('../views/heroes/heroForm', {validacao: erros, hero: dadosForm, studios: studios, id: false});
       return;
@@ -73,7 +73,7 @@ heroController.save = function(req, res) {
     .catch((err) => {
       res.render("../views/studios/index", {validacao: 'You must register at least one studio first', studio: []});
       return;
-    });    
+    });
   }
   else{
     var hero = new Hero(req.body);
@@ -97,13 +97,13 @@ heroController.edit = function(req, res) {
       console.log("Error:", err);
     }
     else {
-      studioList()
+      getStudioList()
       .then((studios) => {
         res.render("../views/heroes/heroForm", {hero: hero, studios: studios, id: req.params.id});
       })
       .catch((err) => {
         res.render("../views/studios/index", {validacao: 'You must register at least one studio first', studio: []});
-      });      
+      });
     }
   });
 };
@@ -121,7 +121,7 @@ heroController.update = function(req, res) {
   var erros = req.validationErrors();
 
   if(erros){
-    studioList()
+    getStudioList()
     .then((studios) => {
       res.render('../views/heroes/heroForm', {validacao: erros, hero: dadosForm, studios: studios, id: req.params.id});
       return;
@@ -129,7 +129,7 @@ heroController.update = function(req, res) {
     .catch((err) => {
       res.render("../views/studios/index", {validacao: 'You must register at least one studio first', studio: []});
       return;
-    }); 
+    });
   }
   else {
     Hero.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, studio: req.body.studio, power: req.body.power, weakness: req.body.weakness }}, { new: true }, function (err, hero) {
@@ -155,7 +155,7 @@ heroController.delete = function(req, res) {
   });
 };
 
-function studioList () {
+function getStudioList () {
   return new Promise((resolve, reject) => {
     Studio.find({}).exec(function (err, studios) {
       if (err) {
