@@ -6,7 +6,7 @@
       <span>Back</span>
     </a>
       <!-- verifcar se é enviado o id do heroi-->
-    <% if(!locals.hero || locals.hero._id != '') { %>
+    <% if(!locals.hero || !locals.id) { %>
       <h1>Register New Hero</h1>
     <% } else { %>
       <h1>Edit Hero</h1>
@@ -29,16 +29,14 @@
 
 
     <div class="row card">
-      <% if(locals.hero) { %>
-          <form action="/heroes/update/<%= locals.hero._id%>" method="post" class="col s12">
-        <% } else { %>
+        <% if(!locals.hero || !locals.id) { %>
           <form action="/heroes/save" method="post" class="col s12">
+        <% } else { %>
+          <form action="/heroes/update/<%= locals.id%>" method="post" class="col s12">
         <% } %>
-        
 
             <div class="input-field col s12">
               <% if(locals.hero) { %>
-                <input id="_id" name="_id" type="text" value="<%=locals.hero._id%>" hidden>
                 <input id="name" name="name" type="text" class="validate" value="<%=locals.hero.name%>"
                   maxlength="50" minlength="3">
               <% } else { %>
@@ -85,11 +83,11 @@
             </div>
 
             <div class="input-field col s12">
-              <% if(locals.hero) { %>
-                <input type="submit" value="Update" class="btn btn-form right" />
-              <% } else { %>
+              <% if(!locals.hero || !locals.id) { %>
                 <input type="submit" value="Save" class="btn btn-form right" />
-              <% } %>
+              <% } else { %>
+                <input type="submit" value="Update" class="btn btn-form right" />
+            <% } %>
             </div>
       </form>
     </div>
