@@ -112,6 +112,7 @@ To remove an Hero click on "trash can" icon.
 - Prettier
 - Mongoose
 - Express Validator
+- Materialize CSS
 
 
 ### Top Contributors
