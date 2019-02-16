@@ -14,88 +14,82 @@
 
     <% if(locals.validacao) { %>
     <% if (locals.validacao.length) { %>
-      <div class="alert alert-danger">
-        <strong>Attention!!!</strong>
-        <ul>
-          <% for(var i = 0; i < locals.validacao.length; i++) { %>
-            <li>
-              <%=locals.validacao[i].msg%>
-            </li>
-          <% } %>
-        </ul>
-      </div>
-    <% } %>
-    <% } %>
+				<div class="alert alert-danger">
+					<strong>Attention!!!</strong>
+					<ul>
+						<% for(var i = 0; i < locals.validacao.length; i++) { %>
+							<li>
+								<%=locals.validacao[i].msg%>
+							</li>
+						<% } %>
+					</ul>
+				</div>
+      <% } %>
+      <% } %>
+
 
     <div class="row card">
-      <% if(!locals.hero || !locals.id) { %>
-        <form action="/heroes/save" method="post" class="col s12">
-          <div class="input-field col s12">
-            <input id="name" name="name" type="text" class="validate" maxlength="50" minlength="3">
-            <label for="name">Name*</label>
-          </div>
+        <% if(!locals.hero || !locals.id) { %>
+          <form action="/heroes/save" method="post" class="col s12">
+        <% } else { %>
+          <form action="/heroes/update/<%= locals.id%>" method="post" class="col s12">
+        <% } %>
 
-          <div class="input-field col s12">
-            <select id="studio" name="studio">
-              <option value='' disabled selected>Select</option>
-              <% for(var i = 0; i < locals.studios.length; i++) { %>
-                <option value='<%= locals.studios[i]._id %>'><%= locals.studios[i].name %></option>
+            <div class="input-field col s12">
+              <% if(locals.hero) { %>
+                <input id="name" name="name" type="text" class="validate" value="<%=locals.hero.name%>"
+                  maxlength="50" minlength="3">
+              <% } else { %>
+                <input id="name" name="name" type="text" class="validate" maxlength="50" minlength="3">
               <% } %>
-            </select>
-            <label>Studio*</label>
-          </div>
+              <label for="name">Name*</label>
+            </div>
 
-          <div class="input-field col s12">
-            <input id="power" name="power" type="text" class="validate" maxlength="50" minlength="3">
-            <label for="power">Power*</label>
-          </div>
+            <div class="input-field col s12">
+              <select id="studio" name="studio">
+                  <% if(!locals.hero || locals.hero._id != '' ) { %>
+                    <option value='' disabled selected>Select</option>
+                  <% } %>
 
-          <div class="input-field col s12">
-            <input id="weakness" name="weakness" type="text" class="validate" maxlength="50" minlength="3">
-            <label for="weakness">Weakness*</label>
-          </div>
-
-          <div class="input-field col s12">
-            <input type="submit" value="Save" class="btn btn-form right" />
-          </div>
-      <% } else { %>
-        <form action="/heroes/update/<%= locals.id%>" method="post" class="col s12">
-          <div class="input-field col s12">
-            <input id="name" name="name" type="text" class="validate" value="<%=locals.hero.name%>"
-              maxlength="50" minlength="3">
-            <label for="name">Name*</label>
-          </div>
-
-          <div class="input-field col s12">
-            <select id="studio" name="studio">
-              <% for(var i = 0; i < locals.studios.length; i++) { %>
-                <% if(locals.studios[i]._id == locals.hero.studio ) { %>
-                  <option value='<%= locals.studios[i]._id %>' selected><%= locals.studios[i].name %></option>
-                <% } else { %>
-                  <option value='<%= locals.studios[i]._id %>'><%= locals.studios[i].name %></option>
+                <% for(var i = 0; i < locals.studios.length; i++) { %>
+                  <% if(locals.studios[i]._id == locals.hero.studio ) { %>
+                    <option value='<%= locals.studios[i]._id %>' selected><%= locals.studios[i].name %></option>
+                  <% } else { %>
+                    <option value='<%= locals.studios[i]._id %>'><%= locals.studios[i].name %></option>
+                  <% } %>
                 <% } %>
+              </select>
+              <label>Studio*</label>
+            </div>
+
+            <div class="input-field col s12">
+              <% if(locals.hero) { %>
+                <input id="power" name="power" type="text" class="validate" value="<%=locals.hero.power%>"
+                  maxlength="50" minlength="3">
+              <% } else { %>
+                <input id="power" name="power" type="text" class="validate" maxlength="50" minlength="3">
               <% } %>
-            </select>
-            <label>Studio*</label>
-          </div>
+              <label for="power">Power*</label>
+            </div>
 
-          <div class="input-field col s12">
-            <input id="power" name="power" type="text" class="validate" value="<%=locals.hero.power%>"
-              maxlength="50" minlength="3">
-            <label for="power">Power*</label>
-          </div>
+            <div class="input-field col s12">
+              <% if(locals.hero) { %>
+                <input id="weakness" name="weakness" type="text" class="validate" value="<%=locals.hero.weakness%>"
+                  maxlength="50" minlength="3">
+              <% } else { %>
+                <input id="weakness" name="weakness" type="text" class="validate" maxlength="50" minlength="3">
+              <% } %>
+              <label for="weakness">Weakness*</label>
+            </div>
 
-          <div class="input-field col s12">
-            <input id="weakness" name="weakness" type="text" class="validate" value="<%=locals.hero.weakness%>"
-              maxlength="50" minlength="3">
-            <label for="weakness">Weakness*</label>
-          </div>
-
-          <div class="input-field col s12">
-            <input type="submit" value="Update" class="btn btn-form right" />
-          </div>
-      <% } %>
-        </form>
+            <div class="input-field col s12">
+              <% if(!locals.hero || !locals.id) { %>
+                <input type="submit" value="Save" class="btn btn-form right" />
+              <% } else { %>
+                <input type="submit" value="Update" class="btn btn-form right" />
+            <% } %>
+            </div>
+      </form>
     </div>
   </div>
 <% include ../templates/footer.html %>
