@@ -14,7 +14,9 @@ var apiRouter = require('./routes/api-routes');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/CrudHeroesApi', { useNewUrlParser: true })
+
+
+mongoose.connect('mongodb://acesso_api:2h0p9REK@ds147436.mlab.com:47436/heroku_fv7n4vjn', { useNewUrlParser: true })
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 
