@@ -5,20 +5,26 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var expressValidator = require('express-validator');
+// Import Body parser
+let bodyParser = require('body-parser');
 
 var heroesRouter = require('./routes/heroes');
 var studiosRouter = require('./routes/studios');
-
+var apiRouter = require('./routes/api-routes');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/CrudHeroes', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/CrudHeroesApi', { useNewUrlParser: true })
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 
 var indexRouter = require('./routes/index');
 
 var app = express();
+
+// Configure bodyparser to handle post requests
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,6 +41,7 @@ app.use(expressValidator());
 app.use('/', indexRouter);
 app.use('/heroes', heroesRouter);
 app.use('/studios', studiosRouter);
+app.use('/api', apiRouter);
 
 
 // catch 404 and forward to error handler

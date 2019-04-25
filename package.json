@@ -1,11 +1,24 @@
 {
-  "name": "CRUDHeroes",
-  "version": "0.0.0",
+  "name": "CRUDHeroesAPI",
+  "version": "1.0.0",
   "private": true,
+  "description": "This project provides a good sample of how-to-do a CRUD in Node.js with API using MongoDB to persist the data's application.",
   "scripts": {
     "start": "node ./bin/www"
   },
+  "keywords": [
+    "Express",
+    "RestAPI",
+    "MongoDB",
+    "Mongoose",
+    "CRUDHeroes",
+    "json",
+    "restful"
+  ],
+  "author": "Iolanda Santos",
+  "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
