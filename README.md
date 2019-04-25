@@ -1,20 +1,20 @@
-# CRUDHeroes
+# CRUDHeroesAPI
 
-CRUDHeroes is a web solution to manage heroes profiles, classifing the heroe by power, weakness and studio.
+CRUDHeroesAPI is a web solution to manage heroes profiles, classifing the heroe by power, weakness and studio.
 This project provides a good sample of how-to-do a CRUD in Node.js using MongoDB to persist the data's application.
 
-![CRUDHeroes - Home](https://github.com/fabriciohsilva/CRUDHeroes/blob/develop/img_sample/CRUDHeroes_Home.jpg?raw=true)
+![CRUDHeroesAPI - Home](https://github.com/iolandasantos/CRUDHeroesAPI/blob/master/img_sample/CRUDHeroes_Home.jpg?raw=true)
 
 
 ## Table of Contents
 
--   [Installation](https://github.com/fabriciohsilva/CRUDHeroes#installation)
-	- [Setup](https://github.com/fabriciohsilva/CRUDHeroes#setup)
-	- [Browser Compatibility](https://github.com/fabriciohsilva/CRUDHeroes#browser-compatibility)
--   [How it works](https://github.com/fabriciohsilva/CRUDHeroes#how-it-works)
--   [Credits](https://github.com/fabriciohsilva/CRUDHeroes#credits)
-	- [Top Contributors](https://github.com/fabriciohsilva/CRUDHeroes#top-contributors)
-	- [License](https://github.com/fabriciohsilva/CRUDHeroes#license)
+-   [Installation](https://github.com/iolandasantos/CRUDHeroesAPI#installation)
+	- [Setup](https://github.com/iolandasantos/CRUDHeroesAPI#setup)
+	- [Browser Compatibility](https://github.com/iolandasantos/CRUDHeroesAPI#browser-compatibility)
+-   [How it works](https://github.com/iolandasantos/CRUDHeroesAPI#how-it-works)
+-   [Credits](https://github.com/iolandasantos/CRUDHeroesAPI#credits)
+	- [Top Contributors](https://github.com/iolandasantos/CRUDHeroesAPI#top-contributors)
+	- [License](https://github.com/iolandasantos/CRUDHeroesAPI#license)
 
 
 ## Installation
@@ -27,9 +27,9 @@ First make sure you have all the apps necessaries to execute the solution:
 
 Then checkout the code and install the dependencies:
 ```
-git clone https://github.com/fabriciohsilva/CRUDHeroes.git -b stable --single-branch --recursive
+git clone https://github.com/iolandasantos/CRUDHeroesAPI.git -b stable --single-branch --recursive
 
-cd ./CRUDHeroes
+cd ./CRUDHeroesAPI
 npm install
 ```
 
@@ -49,7 +49,7 @@ Configure your informations, using the code below like sample:
 </p>
 
 ```
-mongoose.connect('mongodb://username:password@host:port/CrudHeroes?options...', { useNewUrlParser: true })
+mongoose.connect('mongodb://username:password@host:port/CrudHeroesApi?options...', { useNewUrlParser: true })
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 
@@ -59,7 +59,7 @@ mongoose.connect('mongodb://username:password@host:port/CrudHeroes?options...', 
 
 ### Browser Compatibility
 
-CRUDHeroes has been tested successfully with:
+CRUDHeroesAPI has been tested successfully with:
 
 -   Chrome 70.0
 -   Egde
@@ -78,13 +78,13 @@ http://localhost:3000/
 
 To start using the program click "Studio Page" button
 
-![CRUDHeroes - Studio Page](https://github.com/fabriciohsilva/CRUDHeroes/blob/develop/img_sample/CRUDHeroes_Studio_List.jpg?raw=true)
+![CRUDHeroesAPI - Studio Page](https://github.com/iolandasantos/CRUDHeroesAPI/blob/develop/img_sample/CRUDHeroes_Studio_List.jpg?raw=true)
 
 To add a new Studio, click on "Create Studio", fill all necessary data and click "Save".
 
 To edit a Studio informations click on "pencil" icon.
 
-![CRUDHeroes - Studio](https://github.com/fabriciohsilva/CRUDHeroes/blob/develop/img_sample/CRUDHeroes_Studio.jpg?raw=true)
+![CRUDHeroesAPI - Studio](https://github.com/iolandasantos/CRUDHeroesAPI/blob/develop/img_sample/CRUDHeroes_Studio.jpg?raw=true)
 
 To remove a Studio click on "trash can" icon.
 
@@ -92,11 +92,11 @@ After register the Studio the users can register Heroes.
 On Home page click "Heroes Page"
 
 
-![CRUDHeroes - Heroes Page](https://github.com/fabriciohsilva/CRUDHeroes/blob/develop/img_sample/CRUDHeroes_Hero_List.jpg?raw=true)
+![CRUDHeroesAPI - Heroes Page](https://github.com/iolandasantos/CRUDHeroesAPI/blob/develop/img_sample/CRUDHeroes_Hero_List.jpg?raw=true)
 
 To add a new Hero, click on "Create Hero", fill all necessary data and click "Save".
 
-![CRUDHeroes - Hero](https://github.com/fabriciohsilva/CRUDHeroes/blob/develop/img_sample/CRUDHeroes_Hero.jpg?raw=true)
+![CRUDHeroesAPI - Hero](https://github.com/iolandasantos/CRUDHeroesAPI/blob/develop/img_sample/CRUDHeroes_Hero.jpg?raw=true)
 
 To edit an Hero informations click on "pencil" icon.
 
@@ -123,4 +123,4 @@ To remove an Hero click on "trash can" icon.
 
 ### License
 
-CRUDHeroes is released under the  [MIT License](https://github.com/fabriciohsilva/CRUDHeroes/blob/master/LICENSE.md).
+CRUDHeroesAPI is released under the  [MIT License](https://github.com/iolandasantos/CRUDHeroesAPI/blob/master/LICENSE.md).
