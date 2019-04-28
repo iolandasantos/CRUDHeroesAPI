@@ -43,12 +43,17 @@ studioAPIController.new = function(req, res) {
 // Handle view studio info
 studioAPIController.view = function (req, res) {
   Studio.findById(req.params._id, function (err, studio) {
-      if (err)
-          res.send(err);
+    if (err) {
       res.json({
-          message: 'Studio details loading..',
-          data: studio
+        status: "error",
+        message: err,
       });
+    }
+    res.json({
+      status: "success",
+      message: 'Studio details loading..',
+      data: studio
+    });
   });
 };
 
