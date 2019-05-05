@@ -40,6 +40,7 @@ heroAPIController.new = function(req, res) {
     } 
     
     res.json({
+        status: "success",
         message: 'New hero added!',
         data: hero
     });
@@ -53,6 +54,7 @@ heroAPIController.view = function (req, res) {
       if (err)
           res.send(err);
       res.json({
+          status: "success",
           message: 'Hero details loading..',
           data: hero
       });
@@ -75,6 +77,7 @@ heroAPIController.update = function (req, res) {
       if (err)
         res.json(err);
       res.json({
+        status: "success",
         message: 'Hero Info updated',
         data: hero
       });
