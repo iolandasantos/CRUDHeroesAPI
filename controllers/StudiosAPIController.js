@@ -31,7 +31,11 @@ studioAPIController.new = function(req, res) {
   // save the studio and check for errors
   studio.save()
   .then(data => {
-      res.send(data);
+    res.json({
+      status: "success",
+      message: 'Studio Info updated',
+      data: studio
+    });
   }).catch(err => {
       res.status(500).send({
           message: err.message || "Some error occurred while creating the Note."
@@ -70,8 +74,13 @@ studioAPIController.update = function (req, res) {
     // save the studio and check for errors
     studio.save(function (err) {
       if (err)
-        res.json(err);
+        res.json({
+          status: "error",
+          message: err,
+        });
+        
       res.json({
+        status: "success",
         message: 'Studio Info updated',
         data: studio
       });
@@ -82,9 +91,12 @@ studioAPIController.update = function (req, res) {
 studioAPIController.delete = function (req, res) {
   Studio.remove({
     _id: req.params._id
-  }, function (err, contact) {
+  }, function (err) {
     if (err)
-      res.send(err);
+      res.json({
+        status: "error",
+        message: err,
+      });
     res.json({
       status: "success",
       message: 'Studio deleted'
